@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodiversity & A Healthy Society | Project Geo</title>
+    <style>
+        :root {
+            --natgeo-yellow: #FFCC00;
+            --dark-bg: #111111;
+            --text-main: #222222;
+            --light-gray: #f9f9f9;
+            --border-color: #dddddd;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background-color: #ffffff;
+            color: var(--text-main);
+            border: 12px solid var(--natgeo-yellow);
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, .nav-brand, .nav-links a, .section-tag {
+            font-family: 'Arial', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Sticky Navigation */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--natgeo-yellow);
+        }
+
+        .nav-brand {
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            border: 4px solid var(--natgeo-yellow);
+            padding: 4px 12px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--natgeo-yellow);
+        }
+
+        /* Hero Splash Banner */
+        .hero {
+            background-color: var(--dark-bg);
+            color: white;
+            text-align: center;
+            padding: 140px 20px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1511497584788-876760111969?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin: 0 0 15px 0;
+            letter-spacing: 4px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            font-family: 'Arial', sans-serif;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #dddddd;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Content Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-section {
+            padding-top: 100px;
+            margin-bottom: 60px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 40px;
+        }
+
+        .section-tag {
+            color: #777;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin: 0 0 25px 0;
+            color: var(--dark-bg);
+            border-left: 6px solid var(--natgeo-yellow);
+            padding-left: 15px;
+            line-height: 1.1;
+        }
+
+        p {
+            line-height: 1.9;
+            font-size: 1.15rem;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        /* Data Grid Elements */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background-color: var(--light-gray);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            box-sizing: border-box;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #000;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #000;
+            padding-bottom: 8px;
+        }
+
+        .highlight-quote {
+            background-color: #fffbdf;
+            border-left: 6px solid var(--natgeo-yellow);
+            padding: 25px;
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 30px 0;
+            color: #333;
+        }
+
+        /* Lists & Timelines */
+        ul {
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .timeline-item {
+            border-left: 2px solid #000;
+            padding-left: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--natgeo-yellow);
+            border: 2px solid #000;
+            border-radius: 50%;
+        }
+
+        .timeline-year {
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #000;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        footer {
+            background-color: #000;
+            color: #888;
+            text-align: center;
+            padding: 40px 20px;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; padding: 15px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-brand">Project Geo</div>
+        <nav class="nav-links">
+            <a href="#intro">Fundamentals</a>
+            <a href="#health">Medicine</a>
+            <a href="#food">Agro & Energy</a>
+            <a href="#water">Water & Floods</a>
+            <a href="#air">Atmosphere</a>
+            <a href="#protocols">Protocols</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Biodiversity & Society</h1>
+        <p>An Unabridged Assessment of Ecology, Human Health, and Preservation Frameworks</p>
+    </section>
+
+    <div class="container">
+        
+        <section id="intro" class="content-section">
+            <span class="section-tag">Module Framework</span>
+            <h2>The Variety of Life & Human Reliance</h2>
+            <p>Biodiversity is explicitly defined as the variety of life present in an ecosystem. Human society directly benefits from the fundamental richness of biodiversity, sourcing critical biological resources including food, medicine, energy, and additional vital assets from nature. Beyond raw consumption, natural ecosystems actively regulate planetary functions such as climate stability, flood occurrences, pollination, water and air quality parameters, structural water storage capacities, and the biological decomposition of organic wastes. However, these extensive ecosystem provisions remain exceptionally vulnerable to human exploitation. Humanity carries a profound responsibility to optimize these benefits responsibly through the ethical, targeted application of science and technology.</p>
+            
+            <div class="highlight-quote">
+                "The core variations of climatic and altitudinal conditions, coupled with highly varied environmental habitats, represent the precise driving mechanisms responsible for the exceptional richness of biodiversity observed across different regions of Earth."
+            </div>
+
+            <h3>The Three Pillars of Biological Classification</h3>
+            <p>Biological science structures biodiversity into three independent classifications:</p>
+            <ul>
+                <li><strong>Genetic Biodiversity:</strong> Refers specifically to the internal variations existing among organisms belonging to the exact same species, which are historically passed down from parents to genetic offspring.</li>
+                <li><strong>Species Diversity:</strong> Refers explicitly to the specific variety of distinct species situated within a given geographical region. This dimension is strongly dictated by shifting regional environmental conditions. Species stand as the standard baseline measure of global biodiversity because they serve as the foundational basic units of systematic biological classification, grouped broadly into families via shared evolutionary traits.</li>
+                <li><strong>Ecological Diversity:</strong> Identifies the complex network of differing species interacting within a specific environmental system, alongside the dynamic physical reactions occurring between those species.</li>
+            </ul>
+        </section>
+
+        <section id="health" class="content-section">
+            <span class="section-tag">Ethnobotany & Pharmacology</span>
+            <h2>The Natural Foundations of Medicine</h2>
+            <p>Humanity's reliance on plants to treat disease spans millennia, establishing the baseline practice of herbal medicine as early as 2600 BC. For thousands of years, ancient civilizations utilized specific plants like Cupressus sempervirens (Cypress) and Commiphora myrrha (Myrrh) to alleviate coughs, colds, and severe internal inflammation. These botanical solutions were fundamentally embedded within sacred healing rituals and used practically to treat physiological trauma sustained during warfare or accidents. Ancient records from both Egypt and China detail compound drugs engineered into gargles, pills, structural infusions, and topical ointments. Beginning 100 BC to 300 BC, Greek scholars formally documented rules governing the collection, physical storage, and medical application of therapeutic herbs. During the Dark and Middle Ages, isolated monasteries across England, Ireland, France, and Germany preserved Western knowledge of treating illnesses using herbal medicine. Ultimately, medical practices in antiquity were entirely dependent on the specific ecosystem biodiversity present locally.</p>
+
+            <h3>Ethnobotanical Profiles: Historical Adaptations</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Salvia apiana (California Sage)</h3>
+                    <p>Utilized primarily by Indian tribes of Southern California. It was applied as a medicinal aid during childbirth procedures and was believed to shield the human immune system from chronic respiratory illnesses.</p>
+                </div>
+                <div class="card">
+                    <h3>Ligusticum scoticum (Scottish Lovage)</h3>
+                    <p>Historically believed to possess specialized therapeutic properties capable of treating complex hysterical and uterine disorders. Its distinct seeds were explicitly deployed to alleviate flatulence and stimulate human sensory systems.</p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 30px;">
+                <h3>Alhagi maurorum (Camel Thorn)</h3>
+                <p>During peak heat cycles, this plant secretes an explicit sweet, gummy substance from its stems and leaves known as manna. Manna chemically contains melezitose and sucrose, an invert sugar. It exhibits verified diuretic, diaphoretic, laxative, expectorant, gastroprotective, antiseptic, and anti-diarrheal properties. Historically, different global societies applied this single plant differently: Israelis leveraged the roots to stop acute diarrhea, the Konkani people dried and smoked the plant matter to treat chronic asthma, and Roman physicians applied it directly to treat nasal polyps.</p>
+            </div>
+
+            <h3>Modern Pharmacy & The Timeline of Antibiotic Isolation</h3>
+            <p>A massive volume of modern commercially available pharmaceutical products remain explicitly derived from natural substances harvested from plants. For example, salicylic acid—the essential active compound of the popular anti-inflammatory drug aspirin—is extracted directly from the bark of a willow tree. Morphine, an essential modern painkiller first marketed and used in the 1800s, is isolated from Papaver somniferum commonly known as opium poppy. Digitoxin, critical to the management of congestive heart failure, comes from Digitalis purpurea (foxglove), which has already been used to treat heart conditions since the 1700s.</p>
+            
+            <p>The transmission of diseases due to the movement of organisms amplified the need to study the environment in relation to human health, driving documented advancements in contemporary biochemical synthesis:</p>
+
+            <div class="timeline-item">
+                <div class="timeline-year">1938 – 1941</div>
+                <p>Penicillin undergoes its primary clinical trials in 1938. By 1941, the first verified biological indication of bacterial antibiotic resistance to penicillin is documented, triggering a continuous push to uncover novel natural compounds from micro-scale organisms.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1970s</div>
+                <p>Biochemical testing shifts toward inducing bacterial strains highly supersensitive to &beta;-lactams, checking for &beta;-lactamase inhibition, and hunting for sulfur-containing metabolites. This directly exposes completely unmapped antibiotic structural classes: norcardicins, carbapenems, and monobactams. These breakthroughs confirmed that fungi and micro-scale organisms dwelling inside the intercellular cavities of plant stems, petioles, roots, and leaves provide critical drug templates.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1994 – 1998</div>
+                <p>In 1994, an oral pill formulation of pilocarpine achieves formal approval to treat severe dry mouth (xerostomia). In 1998, separate drug compounds are verified to treat Sjogren's syndrome, an autoimmune disorder that attacks and destroys human salivary and lacrimal glands.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2004</div>
+                <p>The therapeutic drug compound quinine is isolated from the bark of Cinchona succirubra Pav. ex Klotzsch and formally approved to treat malaria.</p>
+            </div>
+        </section>
+
+        <section id="food" class="content-section">
+            <span class="section-tag">Agricultural Systems & Power Grid Inputs</span>
+            <h2>Food Security, Agrobiodiversity, & Energy Infrastructure</h2>
+            <p>Food represents the absolute non-negotiable baseline of human survival. During the Stone Age, humans were completely dependent on tracking game and foraging wild flora, limited entirely by what the ecosystem could readily provide them. As the Earth's population grew, escalating resource requirements forced the discovery of crop cultivation and animal domestication. Agricultural practices systematically transitioned from picking desirable wild crops and breeding animals toward maintaining a stable supply of food designed to last for long periods of time as preparation for changing seasons or sudden natural disasters. To scale food extraction, human societies continuously developed more lands for agriculture. Farmers and fishermen rely completely on healthy ecosystems for their livelihood; notably, about 39 out of the leading 57 global food crops need birds and insects as pollinators.</p>
+
+            <div class="highlight-quote">
+                "<strong>Agrobiodiversity Definition:</strong> The historical outcome of careful selection and innovative developments executed by farmers, fishers, and herders throughout the years. It encompasses both harvested crop genetic variations and non-harvested wild species in the environment that support ecosystems for food production."
+            </div>
+
+            <h3>Chronological Evolution of Global Energy Consumption</h3>
+            <p>To secure basic survival, human civilizations have systematically extracted energy from surrounding ecosystems. The structural timeline of energy capture reveals a clear sequence of development:</p>
+
+            <div class="timeline-item">
+                <div class="timeline-year">The Stone Age</div>
+                <p>Humanity relies entirely on biomass heat energy generated by open wood fires. This energy was strictly rationed for thermal protection against lethal cold, cooking raw proteins, and primitive smoke-signal communication between nearby tribes.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1000 BC – 400 BC</div>
+                <p>By 1000 BC, communities in northeastern China systematically extract and burn raw coal for heating and cooking. This practice eventually spreads to other civilizations, such as the Romans and Northern Native Americans. By 400 BC, Greek and Roman technicians design mechanisms to harness hydro power (water energy) for irrigation.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">347 AD – 900 AD</div>
+                <p>The earliest known functional oil wells are engineered in China, making use of extensive bamboo pipelines reaching depths of 800 feet to capture petroleum for lighting and heating. Between 500 AD and 900 AD, Persian engineers design vertical wind-powered grain mills and water pumps.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1300 – 1390</div>
+                <p>Windmills utilizing the modern pinwheel shape appear across Western Europe. By 1390, Dutch engineers construct larger windmills designed specifically to drain water from lakes and marshes within the Rhine River Delta, while expanding wind energy capture to navigate through open bodies of water.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1700s – 1860s (The Industrial Revolution)</div>
+                <p>Raw biomass is rapidly replaced by coal. British industrial plants discover that burning coal converts it into highly concentrated, low-impurity coke fuel, prompting widespread coal use across the world. By the 1820s, natural gas is captured for urban illumination, despite pipeline distribution challenges. The 1830s bring the development of the electric generator following Michael Faraday's discovery of electromagnetism. Commercial oil drilling starts in the 1850s (enabling kerosene distillation from petroleum), and by the 1860s, Augustine Mouchot constructs the first industrial solar-powered engine.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">1892 – 1942</div>
+                <p>Geothermal energy capture is initiated in 1892. By 1942, scientists construct the world's first working nuclear fission reactor. Throughout the 19th and 20th centuries, this reliance on massive coal energy heavily drives the rapid industrialization of the United States, United Kingdom, and other European countries.</p>
+            </div>
+            
+            <h3>Modern Ecocide: The Energy Over-Extraction Crisis</h3>
+            <p>An evaluation of early energy development shows that historic methods caused no direct or indirect exhaustion of biological diversity. However, as early as 1973, accelerating contamination metrics and the risk of potential accidents when using energy alarmed many environmental organizations. This vulnerability exploded into view via multiple high-profile ecological disasters: the 1979 Three Mile Island nuclear reactor accident near Middletown, Pennsylvania; the catastrophic 1989 Exxon Valdez oil spill in Alaska; and subsequent modern disasters in the 2000s, including the coal ash spill in Tennessee, the oil spill in the Gulf of Mexico, and the Fukushima nuclear crisis in Japan.</p>
+            
+            <p>Demands for clean and abundant energy have accelerated unconventional production methods, but in turn, have driven devastating consequences for global biodiversity. These ecological trade-offs manifest in high wildlife mortality, systematic habitat loss, landscape fragmentation, noise and light pollution, invasive species vectors, and major alterations in global carbon stocks and water resources.</p>
+        </section>
+
+        <section id="water" class="content-section">
+            <span class="section-tag">Hydrological Engineering</span>
+            <h2>Water Resource Security & Geomorphology</h2>
+            <p>Humanity's earliest recorded civilizations emerged near rivers and lakes, binding economic survival to water proximity. With increasing demand for potable water alongside the discovery of groundwater 2,000 years ago, wells began to be used in the Middle East. Water from rivers and lakes was also directed for agricultural irrigation. To cope with changing tides, floodways were utilized to prevent flooding in nearby communities that usually result in damaged crops. Aqueducts were invented and built by the Romans and the Greeks to maintain stable water supplies to communities that were far from bodies of water. Then, in the late 19th century, mega-dams were built to secure stable water stores and mass crop irrigation.</p>
+
+            <div class="card">
+                <h3>Forest Filtration Mechanisms</h3>
+                <p>Biodiversity in forests plays an unquestionably crucial role in regulating water resources by providing natural filtration and catchment storage systems to provide freshwater. The roots and leaves of trees create conditions that promote the infiltration of rainwater into the soil matrix rather than washing away, recharging subterranean aquifer networks with groundwater while allowing clean water percolation into rivers and lakes. Forests dictate the water cycle by regulating transpiration, atmospheric evaporation, and total water storage in watersheds. Indigenous forests and biodiversity operate in synchronous ways to actively contribute to and regulate the structural quantity and chemical purity of freshwater.</p>
+            </div>
+
+            <h3>The Double-Edged Sword of Flooding: Urban vs. Rural Impact</h3>
+            <p>While flooding is primarily feared for its immediate destructive power, natural flood cycles provide essential geomorphological benefits. In the context of agriculture, flooding can help farmers for it distributes nutrients that particular patches of soil lacked, making the soil healthier and more fertile for the cultivation of crops. Floods can also add nutrients to rivers and lakes, thus improving the overall ecosystem. However, these benefits are not always achieved because most of the time, flooding causes long-term damages. Recent intense floodings caused by typhoons have been extremely damaging, which may be one of the cascading effects of climate change.</p>
+            
+            <p>In the context of the Philippines, flooding inflicts starkly distinct forms of devastation across urban and rural landscapes:</p>
+            <ul>
+                <li><strong>Urban Vulnerability:</strong> Heavy floods compromise cities, destroying residential homes, wiping out roads, and wrecking civil infrastructure due to the lack of proper drainage systems and broken waste management systems.</li>
+                <li><strong>Rural Vulnerability:</strong> Floods instantly drown agricultural fields, decimate farmlands and crops, and cause high casualties among low-lying communities situated near volatile riverbanks or lakes.</li>
+            </ul>
+        </section>
+
+        <section id="air" class="content-section">
+            <span class="section-tag">Biochemical Pollution Metrics</span>
+            <h2>Air and Water Treatment Dynamics</h2>
+            <p>Certain atmospheric gases classified as criteria pollutants—such as nitrogen oxides (NOx) and ozone (O3)—contribute positively to a healthy ecosystem and balanced biodiversity when maintained at naturally moderate background concentrations. However, due to excessive concentrations of these gases, the capacity of the environment to clean itself and to be resilient is diminished. Excessive nitrogen stimulates the overgrowth of specific nitrogen-loving plant species but reduces the occurrence of plant species adapted to low-nitrogen environments. Crucially, excess nitrogen directly undercuts a forest's resilience against other environmental stressors, leaving trees highly vulnerable to prolonged drought, intense frost, invasive pests, and opportunistic diseases. Present legal concentration safety limits for nitrate in drinking water are set too high to shield fragile natural ecosystems, particularly plant species, from structural and functional collapse. This damage acts as a slow crisis; it may take decades to manifest, but it steadily weakens the foundational resilience of soil and vegetation.</p>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Tropospheric (Ground-Level) Ozone Synthesis</h3>
+                    <p>Ozone can be good or bad depending on where it is found: the earth's upper atmosphere or at ground level. Ground-level ozone is known as the bad ozone. It is created by chemical reactions occurring between oxides of nitrogen (NOx) and volatile organic compounds (VOC) under the intense presence of sunlight.</p>
+                </div>
+                <div class="card">
+                    <h3>Vegetation & Yield Reduction Data</h3>
+                    <p>From 1990 to 2006, ground-level ozone drove extensive vegetation damage around the world. High ozone exposure promotes early flowering, affecting the crucial synchronization between pollinators and flowers. It also burns and damages the leaves of salad crops, consequently reducing their market value. In 2000, ozone pollution reduced global wheat yields by 14 percent and tomato yields by 9 percent, creating a massive domino effect in the overall production and consumption of goods.</p>
+                </div>
+            </div>
+
+            <h3>The Soil Saturation Flashpoint</h3>
+            <p>Negative impacts on vegetation actively reduce the natural sink capacity for carbon dioxide and ozone, enhancing their atmospheric concentrations and affecting the global water cycle. The resulting global warming patterns inflict cascading harm on the environment and its inhabitants. Soils temporarily store air pollutants that affect water purification, but stored pollutants have adverse effects on soil functioning (e.g., microbes and invertebrates) and create severe problems when the absolute retention capacity of soil is reached or physically disturbed. Consequently, worldwide initiatives are being launched to decrease nitrogen deposition to the biosphere to enhance plant species diversity and relative species richness in grasslands.</p>
+        </section>
+
+        <section id="protocols" class="content-section">
+            <span class="section-tag">Environmental Law Frameworks</span>
+            <h2>International Treaties & Local Protections</h2>
+            <p>Because the biological systems supporting human society are deeply vulnerable to industrial exploitation, strict legal regulations are required. There is a clear need to enhance the implementation of regulations and worldwide protocols, such as the Montreal Protocol and Kyoto Protocol.</p>
+
+            <div class="card" style="border-top: 4px solid var(--natgeo-yellow);">
+                <h3>The Cartagena Protocol on Biosafety</h3>
+                <p>The Cartagena Protocol among ten Pacific countries, namely, Fiji, Kiribati, the Marshall Islands, Nauru, Niue, Palau, Papua New Guinea, Samoa, the Solomon Islands, and Tonga, aims to ensure the safe transport, handling, and use of living modified organisms (LMOs) resulting from modern biotechnology that may have adverse effects on biodiversity. It was adopted on January 29, 2000, and enforced on September 11, 2003, linked directly to the Convention on Biological Diversity to protect Pacific communities from the consequences of LMOs.</p>
+                <p>Under this framework, participating nations are required to establish operational screening facilities. This demands building firm legislative frameworks, laboratory facilities, technology, and technical capabilities to successfully enable countries to detect, measure, and monitor LMOs that come into the country.</p>
+            </div>
+
+            <h3>Local Enforcement Mandates</h3>
+            <p>Locally, strict implementation of environmental laws among industries and communities alike must be ensured to prevent further damage to biodiversity from air pollution and water pollution. There should also be efforts to ensure that whatever treatment is employed, it should not promote mass pollution transfer from one matrix of the environment to another.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>PROJECT GEO | SCIENCE, TECHNOLOGY, &amp; SOCIETY RESEARCH MODULE</p>
+        <p style="font-size: 0.75rem; margin-top: 10px; color: #555;">All content compiled directly from Group 7 Textbook Documentation.</p>
+    </footer>
+
+</body>
+</html>
